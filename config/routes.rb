@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'main_pages#index'
+  root 'pages#index'
   get 'pages/login_facebook'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
