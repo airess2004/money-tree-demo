@@ -1,6 +1,32 @@
 Rails.application.routes.draw do
+  
+  get 'administrator/User'
+
+  get 'administrator/index'
+
+  devise_for :users
   root 'pages#index'
+  
+  namespace :administrator do
+    # devise_for :admins
+    # root 'administrator#index'
+    resources :users
+    get 'search_items' => 'items#search', :as => :search_item, :method => :get
+    get 'index'
+    get 'user_list/list' => 'user_list#list'
+    get 'user_list/show' => 'user_list#show'
+  end
+  
   get 'pages/login_facebook'
+  # get 'pages/step1'
+  get 'pages/step2'
+  get 'pages/step3'
+  get 'pages/step4'
+  get 'pages/step1' => "pages#step1", :as => :pages_step1
+  post 'pages/create_user' => "pages#create_user", :as => :pages_create_user
+  post 'save_to_session' =>"pages#save_to_session"
+  post 'create' =>"pages#create"
+  resources :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

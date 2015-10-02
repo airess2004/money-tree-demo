@@ -36,6 +36,7 @@ gem 'bootstrap-sass', '~> 3.0.3.0'
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 gem "paperclip-dropbox"
 gem 'figaro'
+gem 'devise'
 
 group :production do
   gem 'pg'

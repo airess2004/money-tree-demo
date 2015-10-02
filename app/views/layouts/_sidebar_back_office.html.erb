@@ -1,0 +1,23 @@
+  <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+        <ul class="sidebar-menu">
+            <li class="header">MAIN NAVIGATION</li>
+            <li>
+              <%= link_to "user_list", controller: "profiles" do %>
+              <!--<a href="../calendar.html">-->
+                <i class="fa fa-user-plus"></i> <span>User Pre-Approval</span>
+                <small class="label pull-right bg-red">3</small>
+              <!--</a>-->
+              <% end %>
+            </li>
+            <li>
+              <%= link_to "loan_request", controller: "profiles" do %>
+                <i class="fa fa-money"></i> <span>Loan Request</span>
+                <small class="label pull-right bg-yellow">12</small>
+              <% end %>
+            </li>
+          </ul>
+          </section>
+        <!-- /.sidebar -->
+      </aside>

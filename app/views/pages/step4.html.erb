@@ -1,0 +1,126 @@
+	
+</head>
+<body>
+		
+		<section class="borrow-header">
+			<div class="container">
+				
+				<div class="row">
+					<div class="col-md-12">
+						<h1>Get a Loan</h1>
+						<h5>Fill in these form to get the rate</h5>
+					</div>
+				</div>
+			
+			</div>
+		</section>
+		
+		<section class="step-progress-container">
+			
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<ol class="step-progress">
+							<li class="is-complete" data-step="1">
+								About You
+						  	</li>
+							<li class="is-complete" data-step="2">
+								Financial Info
+							</li>
+							<li class="is-complete" data-step="3">
+								Legal Documents
+							</li>
+							<li class="is-active" data-step="4" class="progress__last">
+								Review your Offer
+							</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+		
+		</section>
+		
+		<section class="loan-form">
+			
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8">
+						<h2>Thank you for your time.</h2>
+						<p>Thank you for submitting the form. We will review your offer and get back to you as soon as possible. <br>Meanwhile, please look at our other products you might interested in.</p>
+					</div>
+					<div class="col-md-4">
+						<%= render 'layouts/stepsidebar' %>
+					</div>
+				</div>
+			</div>
+		
+		</section><!--end of Home section-->
+		
+		
+		
+		
+	<script type="text/javascript">
+        $(function() {
+			$('.auto').autoNumeric('init');
+            $("#bank_name").combobox();
+			$("#smart-form").validate({
+					errorClass: "state-error",
+					validClass: "state-success",
+					errorElement: "em",
+					rules: {
+						account_first_name: {
+								required: true
+						},
+						account_last_name: {
+								required: true
+						},
+						account_no: {
+								required: true,
+								number: true
+						},
+						bank_name: {
+								required: true,
+						},
+						bank_branch: {
+								required: true,
+						}		
+					},
+					messages:{
+						account_first_name: {
+								required: 'Please enter your account first name',
+						},
+						account_last_name: {
+								required: 'Please enter your account last name',
+						},
+						account_no: {
+								required: 'Please enter your account number',
+								number: 'Please enter a VALID number'
+						},	
+						bank_name: {
+								required: 'Please choose your bank'
+						},	
+						bank_branch: {
+								required: 'Please enter your bank branch',
+						}
+					},
+					highlight: function(element, errorClass, validClass) {
+							$(element).closest('.field').addClass(errorClass).removeClass(validClass);
+					},
+					unhighlight: function(element, errorClass, validClass) {
+							$(element).closest('.field').removeClass(errorClass).addClass(validClass);
+					},
+					errorPlacement: function(error, element) {
+					   if (element.is(":radio") || element.is(":checkbox")) {
+								element.closest('.option-group').after(error);
+					   } else {
+								error.insertAfter(element.parent());
+					   }
+					}
+							
+			});					
+				
+        });
+    </script>
+	
+</body>
+</html>

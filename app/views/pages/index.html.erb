@@ -1,0 +1,95 @@
+<section class="home-banner">
+			
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6"></div>
+					<div class="col-md-6 home-call-out">
+						<h2>Borrow up to <strong>IDR 200 Mil</strong></h2>
+						<h2>at rates starting at <strong>5.9%</strong></h2>
+						<h5>Grow your business with an affordable, easy business loan</h5>
+							<div class="smart-forms home-loan-box">
+							<h3>Get a quote in minutes</h3>
+							<%= form_tag({:controller => "pages", :action => "save_to_session"}, :method => "posts", :id => "smart-form") do %>
+							<!--<form id="smart-form" action="/pages/login_facebook">-->
+								<div class="form-body theme-black">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="section">
+												<label class="field">
+													<input type="text" class="gui-input auto" data-a-sign="Rp. " id="loan" name="loan" placeholder="How much do you need?">
+												</label>
+											</div><!-- end section --> 
+										</div>
+												
+										<div class="col-md-6">
+											<div class="section">
+												<label class="field">
+													<select id="combobox1" name="combobox1" data-cb-widget-placeholder="What is it for" 
+													data-cb-widget-id="purpose" data-cb-widget-name="purpose">
+														<option value="">What is it for</option>
+														<option value="ActionScript">Inventory Purchase</option>
+														<option value="AppleScript">Equipment Purchase</option>
+														<option value="Asp">Working Capital</option>
+														<option value="BASIC">Remodel</option>
+														<option value="C">Aquire Business Location</option>
+													</select>
+												</label>
+											</div><!-- end section -->
+										</div>
+										
+										<div class="col-md-12 text-center">
+											<button type="submit" class="button btn-primary expand"> Check your rate </button>
+										</div>
+									</div>
+								</div>
+							<!--</form>-->
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+		</section><!--end of Home section-->
+		
+		<script type="text/javascript">
+        $(function() {
+			$('.auto').autoNumeric('init');
+            $("#combobox1").combobox();
+			$("#smart-form").validate({
+					errorClass: "state-error",
+					validClass: "state-success",
+					errorElement: "em",
+					rules: {
+						loan: {
+								required: true
+						},	
+						purpose: {
+								required: true
+						}					
+					},
+					messages:{
+						loan: {
+								required: 'Please enter loan amount',
+						},	
+						purpose: {
+								required: 'Please select loan purpose'
+						}					
+					},
+					highlight: function(element, errorClass, validClass) {
+							$(element).closest('.field').addClass(errorClass).removeClass(validClass);
+					},
+					unhighlight: function(element, errorClass, validClass) {
+							$(element).closest('.field').removeClass(errorClass).addClass(validClass);
+					},
+					errorPlacement: function(error, element) {
+					   if (element.is(":radio") || element.is(":checkbox")) {
+								element.closest('.option-group').after(error);
+					   } else {
+								error.insertAfter(element.parent());
+					   }
+					}
+							
+			});					
+				
+        });
+    </script>

@@ -1,0 +1,486 @@
+<%= form_for @object ,:id => "smart-form" ,:url => "create_user" do |f| %>
+<% if @object.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <h4><%= pluralize(@object.errors.count, "error") %> prohibited this listing from being saved:</h4>
+
+      <ul>
+      <% @object.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+								<div class="form-body theme-black">
+									<div class="row">
+										<div class="col-md-3">
+											<div class="section">
+												<label class="field-label colm">Personal Name<em> * </em></label>
+											</div><!-- end section --> 
+										</div>
+												
+										<div class="col-md-8">
+											
+											<div class="row">
+												<div class="col-md-6">
+													<div class="section">
+														<label class="field prepend-icon">
+																<%= f.text_field :first_name, class: "gui-input", :placeholder => "Enter your first name" %>
+															<!--<input type="text" name="first_name" id="first_name" class="gui-input" placeholder="Enter your first name">-->
+															<span class="field-icon"><i class="fa fa-user"></i></span>  
+														</label>
+													</div><!-- end section -->
+												</div>
+												
+												<div class="col-md-6">
+													<div class="section">
+														<label class="field prepend-icon">
+															<%= f.text_field :last_name, class: "gui-input", :placeholder => "Enter your last name" %>
+															<span class="field-icon"><i class="fa fa-user"></i></span>  
+														</label>
+													</div><!-- end section -->
+												</div>
+											</div>
+											
+										</div>
+									</div>
+									
+									<div class="row">
+										<div class="col-md-3">
+											<div class="section">
+												<label class="field-label colm">Date of birth<em> * </em></label>
+											</div><!-- end section --> 
+										</div>
+												
+										<div class="col-md-4">
+											<div class="section">
+												<label for="birthday" class="field prepend-icon">
+													<%= f.text_field :birth_date, class: "gui-input", :placeholder => "mm/dd/yyyy" ,:id => "birthday"%>
+													<!--<input type="text" id="birthday" name="birthday" class="gui-input" placeholder="mm/dd/yyyy">-->
+													<span class="field-icon"><i class="fa fa-calendar"></i></span>  
+												</label>
+											</div><!-- end section -->
+										</div>
+									</div>
+									
+									<div class="row">
+										<div class="col-md-3">
+											<div class="section">
+												<label class="field-label colm">Gender<em> * </em></label>
+											</div><!-- end section --> 
+										</div>
+												
+										<div class="col-md-8">
+											<div class="section">
+												<div class="option-group field">
+													<label for="female" class="option">
+														<%= f.radio_button :gender_status, "2" ,:id => "female"%>
+														<span class="radio"></span> Female
+													</label>
+													
+													<label for="male" class="option">
+														<%= f.radio_button :gender_status, "1" ,:id => "male"%>
+														<span class="radio"></span> Male                 
+													</label>
+													
+												</div>
+											</div><!-- end section -->
+										</div>
+									</div>
+									
+									<div class="row">
+										<div class="col-md-3">
+											<div class="section">
+												<label class="field-label colm">Status<em> * </em></label>
+											</div><!-- end section --> 
+										</div>
+												
+										<div class="col-md-8">
+											<div class="section">
+												<div class="option-group field">
+													<label for="single" class="option">
+														<%= f.radio_button :marital_status, "1" ,:id => "single"%>
+														<span class="radio"></span> Single
+													</label>
+													
+													<label for="married" class="option">
+														<%= f.radio_button :marital_status, "2" ,:id => "married"%>
+														<span class="radio"></span> Married                 
+													</label>
+													
+													<label for="widow" class="option">
+														<%= f.radio_button :marital_status, "3" ,:id => "widow"%>
+														<span class="radio"></span> Widow                
+													</label>
+													
+													<label for="divorce" class="option">
+														<%= f.radio_button :marital_status, "4" ,:id => "divorce"%>
+														<span class="radio"></span> Divorce              
+													</label>
+													
+													<label for="remarried" class="option">
+														<%= f.radio_button :marital_status, "5" ,:id => "remarried"%>
+														<span class="radio"></span> Remarried              
+													</label>
+													
+												</div>
+											</div><!-- end section -->
+										</div>
+									</div>
+									
+									<div class="row">
+										<div class="col-md-3">
+											<div class="section">
+												<label class="field-label colm">Child</label>
+											</div><!-- end section --> 
+										</div>
+												
+										<div class="col-md-4">
+											<div class="section">
+												<label for="adults" class="field prepend-icon">
+													<%= f.text_field :number_of_child, class: "gui-input", :placeholder => "Number of childs" ,:id => "childs"%>
+													<span class="field-icon"><i class="fa fa-male"></i></span>  
+												</label>
+											</div><!-- end section -->
+										</div>
+									</div>
+									
+									<div class="row">
+										<div class="col-md-3">
+											<div class="section">
+												<label class="field-label colm">Home Adress<em> * </em></label>
+											</div><!-- end section --> 
+										</div>
+												
+										<div class="col-md-8">
+											<div class="section">
+												<label class="field option">
+													<input type="checkbox" name="info" checked="">
+													<span class="checkbox"></span> 
+													My home address is the same as my business address               
+												</label>
+											</div><!-- end section -->
+											<div class="section">
+												<label class="field prepend-icon">
+													<%= f.text_field :street_address, class: "gui-input", :placeholder => "Street address" ,:id => "firstaddr"%>
+													<span class="field-icon"><i class="fa fa-building-o"></i></span>  
+												</label>
+											</div><!-- end section -->
+											
+											<div class="row">
+												<div class="col-md-3">
+													<div class="section">
+														<label class="field prepend-icon">
+															<%= f.text_field :zip_code, class: "gui-input", :placeholder => "Zip" ,:id => "zip"%>
+															<span class="field-icon"><i class="fa fa-certificate"></i></span> 
+														</label>
+													</div><!-- end section -->
+												</div>
+												
+												<div class="col-md-4">
+													<div class="section">
+														<label class="field prepend-icon">
+															<%= f.text_field :city, class: "gui-input", :placeholder => "City" ,:id => "city"%>
+															<span class="field-icon"><i class="fa fa-building-o"></i></span> 
+														</label>
+													</div><!-- end section -->
+												</div>
+												
+												<div class="col-md-5">
+													<div class="section">
+														<label class="field select">
+														<select id="countries" name="countries" data-cb-widget-placeholder="Choose country" 
+														data-cb-widget-id="countries" data-cb-widget-name="countries">
+															<option value="">Choose country</option>
+															<option value="">Indonesia</option>
+														</select>
+													</label>
+													</div><!-- end section -->
+												</div>
+											</div>
+										</div>
+									</div>
+									
+									<div class="row">
+										<div class="col-md-3">
+											<div class="section">
+												<label class="field-label colm">Handphone<em> * </em></label>
+											</div><!-- end section --> 
+										</div>
+												
+										<div class="col-md-4">
+											<div class="section">
+												<label for="home_phone" class="field prepend-icon">
+														<%= f.text_field :handphone, class: "gui-input", :placeholder => "Handphone" ,:id => "home_phone"%>
+													<span class="field-icon"><i class="fa fa-phone"></i></span>  
+												</label>
+											</div><!-- end section -->
+										</div>
+									</div>
+									
+									<div class="row">
+										<div class="col-md-3">
+											<div class="section">
+												<label class="field-label colm">Email<em> * </em></label>
+											</div><!-- end section --> 
+										</div>
+												
+										<div class="col-md-4">
+											<div class="section">
+												<label for="guestemail" class="field prepend-icon">
+													<%= f.text_field :email, class: "gui-input", :placeholder => "Email address" ,:id => "email"%>
+													<span class="field-icon"><i class="fa fa-envelope"></i></span>  
+												</label>
+											</div><!-- end section -->
+										</div>
+									</div>
+									
+									<div class="row">
+										<div class="col-md-12">
+											<h3>Employment Data</h3>
+										</div>
+									</div>
+									
+									<div class="row">
+										<div class="col-md-3">
+											<div class="section">
+												<label class="field-label colm">Company<em> * </em></label>
+											</div><!-- end section --> 
+										</div>
+												
+										<div class="col-md-4">
+											<div class="section">
+												<label class="field prepend-icon">
+													<input type="text" name="company" id="company" class="gui-input" placeholder="Company name">
+													<span class="field-icon"><i class="fa fa-building"></i></span>  
+												</label>
+											</div><!-- end section -->
+										</div>
+									</div>
+									
+									<div class="row">
+										<div class="col-md-3">
+											<div class="section">
+												<label class="field-label colm">Position<em> * </em></label>
+											</div><!-- end section --> 
+										</div>
+												
+										<div class="col-md-4">
+											<div class="section">
+												<label class="field prepend-icon">
+													<input type="text" name="position" id="position" class="gui-input" placeholder="Your position">
+													<span class="field-icon"><i class="fa fa-users"></i></span>  
+												</label>
+											</div><!-- end section -->
+										</div>
+									</div>
+									
+									<div class="row">
+										<div class="col-md-3">
+											<div class="section">
+												<label class="field-label colm">Salary<em> * </em></label>
+											</div><!-- end section --> 
+										</div>
+												
+										<div class="col-md-4">
+											<div class="section">
+												<label class="field">
+													<input type="text" class="gui-input auto" data-a-sign="Rp. " id="salary" name="salary" placeholder="Your salary">
+												</label>
+											</div><!-- end section -->
+										</div>
+										
+										<div class="col-md-3">
+											<div class="section">
+												<label class="field-label colm">Per Month</label>
+											</div><!-- end section --> 
+										</div>
+									</div>
+									
+									<div class="row">
+										<div class="col-md-3">
+											<div class="section">
+												<label class="field-label">Number of years in company<em> * </em></label>
+											</div><!-- end section --> 
+										</div>
+												
+										<div class="col-md-2">
+											<div class="section">
+												<label class="field">
+													<input type="text" name="years_company" id="years_company" class="gui-input" placeholder="Years">
+												</label>
+											</div><!-- end section -->
+										</div>
+									</div>
+									
+									<div class="row">
+										<div class="col-md-3">
+											<div class="section">
+												<label class="field-label colm">Company Adress<em> * </em></label>
+											</div><!-- end section --> 
+										</div>
+												
+										<div class="col-md-8">
+											<div class="section">
+												<label class="field prepend-icon">
+													<input type="text" name="firstaddr" id="firstaddr" class="gui-input" placeholder="Street address">
+													<span class="field-icon"><i class="fa fa-building-o"></i></span>  
+												</label>
+											</div><!-- end section -->
+											
+											<div class="row">
+												<div class="col-md-3">
+													<div class="section">
+														<label class="field prepend-icon">
+															<input type="text" name="zip" id="zip" class="gui-input" placeholder="Zip">
+															<span class="field-icon"><i class="fa fa-certificate"></i></span> 
+														</label>
+													</div><!-- end section -->
+												</div>
+												
+												<div class="col-md-4">
+													<div class="section">
+														<label class="field prepend-icon">
+															<input type="text" name="city" id="city" class="gui-input" placeholder="City">
+															<span class="field-icon"><i class="fa fa-building-o"></i></span> 
+														</label>
+													</div><!-- end section -->
+												</div>
+												
+												<div class="col-md-5">
+													<div class="section">
+														<label class="field select">
+														<select id="countries2" name="countries2" data-cb-widget-placeholder="Choose country" 
+														data-cb-widget-id="countries2" data-cb-widget-name="countries2">
+															<option value="">Choose country</option>
+														</select>
+													</label>
+													</div><!-- end section -->
+												</div>
+											</div>
+										</div>
+									</div>
+									
+									<div class="row">
+										<div class="col-md-3">
+											<div class="section">
+												<label class="field-label colm">Company Telephone<em> * </em></label>
+											</div><!-- end section --> 
+										</div>
+												
+										<div class="col-md-4">
+											<div class="section">
+												<label for="home_phone" class="field prepend-icon">
+													<input type="tel" name="company_phone" id="company_phone" class="gui-input phone-group" placeholder="Telephone">
+													<span class="field-icon"><i class="fa fa-phone"></i></span>  
+												</label>
+											</div><!-- end section -->
+										</div>
+									</div>
+										
+									<div class="row">
+										<div class="col-md-11 text-right">
+											<button type="submit" class="button btn-primary expand"> Continue <i class="fa fa-arrow-right"></i></button>
+										</div>
+									</div>
+								</div>
+							<% end %>
+							
+		<script type="text/javascript">
+		  $(function() {
+			$('.auto').autoNumeric('init');
+      $("#countries").combobox();
+			$("#countries2").combobox();
+			$("#birthday").datepicker({
+					defaultDate: "+1w",
+					changeMonth: false,
+					numberOfMonths: 1,
+					prevText: '<i class="fa fa-chevron-left"></i>',
+					nextText: '<i class="fa fa-chevron-right"></i>'
+				});
+			$("#new_user").validate({
+					errorClass: "state-error",
+					validClass: "state-success",
+					errorElement: "em",
+					rules: {
+						'user[first_name]': {
+								required: true
+						},
+						'user[last_name]': {
+								required: true
+						},
+						gender_status: {
+								required: true
+						},
+						street_address: {
+								required: true
+						},
+						number_of_child: {
+								number: true
+						},
+						home_phone: {
+								required: true,
+								number: true
+						},
+						birthday: {
+								required: true,
+						},
+						email: {
+								required: true,
+								email: true,
+						},	
+						years_company: {
+								number: true
+						},			
+					},
+					messages:{
+						'user[first_name]': {
+								required: 'Please enter your first name',
+						},
+						'user[last_name]': {
+								required: 'Please enter your last name',
+						},
+						gender_status: {
+								required: 'Please select your gender',
+						},	
+						street_address: {
+								required: 'Please enter your home address',
+						},
+						number_of_child: {
+								number: 'Please enter a VALID number',
+						},	
+						home_phone: {
+								required: 'Please enter your home address',
+								number: 'Please enter a VALID phone number'
+						},	
+						birth_date: {
+								required: 'Please enter birthday',
+						},	
+						email: {
+								required: 'Enter your email address',
+								email: 'Enter a VALID email address'
+						},	
+						years_company: {
+								number: 'Please enter a VALID number',
+						},	
+					},
+					highlight: function(element, errorClass, validClass) {
+							$(element).closest('.field').addClass(errorClass).removeClass(validClass);
+					},
+					unhighlight: function(element, errorClass, validClass) {
+							$(element).closest('.field').removeClass(errorClass).addClass(validClass);
+					},
+					errorPlacement: function(error, element) {
+					   if (element.is(":radio") || element.is(":checkbox")) {
+								element.closest('.option-group').after(error);
+					   } else {
+								error.insertAfter(element.parent());
+					   }
+					}
+							
+			});					
+				
+        });
+    </script>

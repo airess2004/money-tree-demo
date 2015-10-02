@@ -11,11 +11,119 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150928054945) do
+ActiveRecord::Schema.define(version: 20151001030143) do
 
-  create_table "main_pages", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "admins", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
+
+  add_index "admins", ["email"], name: "index_admins_on_email", unique: true
+  add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+
+  create_table "legal_inspections", force: :cascade do |t|
+    t.integer  "loan_request_id"
+    t.integer  "number_inspection"
+    t.boolean  "document_status",   default: false
+    t.string   "document_name"
+    t.text     "document_desc"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+  end
+
+  create_table "loan_inspections", force: :cascade do |t|
+    t.integer  "loan_request_id"
+    t.integer  "number_inspection"
+    t.boolean  "ktp_status",                 default: false
+    t.text     "ktp_desc"
+    t.boolean  "kartu_keluarga_status",      default: false
+    t.text     "kartu_keluarga_desc"
+    t.boolean  "bills_status",               default: false
+    t.text     "bills_desc"
+    t.boolean  "credit_card_bills_status",   default: false
+    t.text     "credit_card_bills_desc"
+    t.boolean  "salary_verification_status", default: false
+    t.text     "salary_verification_desc"
+    t.boolean  "other_status",               default: false
+    t.text     "other_desc"
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+  end
+
+  create_table "loan_requests", force: :cascade do |t|
+    t.integer  "user_id"
+    t.decimal  "loan_amount",                precision: 14, scale: 2, default: 0.0
+    t.integer  "purpose"
+    t.integer  "status"
+    t.string   "ktp_url"
+    t.boolean  "ktp_status",                                          default: false
+    t.string   "kartu_keluarga_url"
+    t.boolean  "kartu_keluarga_status",                               default: false
+    t.string   "bills_url"
+    t.boolean  "bills_status",                                        default: false
+    t.string   "credit_card_bills_url"
+    t.boolean  "credit_card_bills_status",                            default: false
+    t.string   "salary_verification_url"
+    t.boolean  "salary_verification_status",                          default: false
+    t.string   "other_url"
+    t.boolean  "other_status",                                        default: false
+    t.datetime "created_at",                                                          null: false
+    t.datetime "updated_at",                                                          null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                                               default: "",  null: false
+    t.string   "encrypted_password",                                  default: "",  null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.datetime "birth_date"
+    t.integer  "gender_status"
+    t.integer  "marital_status"
+    t.integer  "number_of_child"
+    t.text     "street_address"
+    t.string   "zip_code"
+    t.string   "city"
+    t.string   "country"
+    t.string   "handphone"
+    t.datetime "approved_on"
+    t.integer  "rate"
+    t.integer  "status"
+    t.string   "company_name"
+    t.string   "position"
+    t.decimal  "salary_amount",              precision: 14, scale: 2, default: 0.0
+    t.integer  "number_of_years_in_company"
+    t.text     "company_street_address"
+    t.string   "company_zip_code"
+    t.string   "company_city"
+    t.string   "company_country"
+    t.string   "company_phone"
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                                       default: 0,   null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                                                        null: false
+    t.datetime "updated_at",                                                        null: false
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+  end
+
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

@@ -1,0 +1,17 @@
+<table class="table table-striped table-bordered">
+  <tr>
+    <th class="center">First Name</th>
+    <th class="center">Last Name</th>
+    <th class="center">Email</th>
+    <th class="center">Birth Date</th>
+  </tr>
+<% @object.each do |listing| %>
+<tr>
+  <td><%= listing.first_name %></td>
+  <td><%= listing.last_name %></td>
+  <td><%= listing.email %></td>
+  <td><%= listing.birth_date %></td>
+  <td><%= link_to 'New Listing', '/administrator/user_list/show',:id => listing.id,class: "btn btn-link" %></td>
+</tr>
+<% end %>
+</table>

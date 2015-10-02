@@ -5,3 +5,16 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+(1.upto 10).each do |x|
+    user = User.create_object(
+        :email => "Email#{x}@gmail.com",
+        :first_name => "First Name #{x}",
+        :last_name => "Last Name #{x}",
+        :gender_status => rand(1..2),
+        :marital_status => rand(1..5),
+        :street_address => "Address #{x}",
+        :birth_date => DateTime.now,
+        :handphone => "#{x}#{x}#{x}#{x}#{x}#{x}#{x}#{x}#{x}"
+      )
+end
